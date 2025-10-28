@@ -3,9 +3,9 @@ pipeline {
         label 'AGENT-1'
     }
 
-    // environment {
-    //     COURSE = 'Jenkins'
-    // }
+    environment {
+        appVersion = ''
+    }
 
     options {
         timeout(time: 30, unit: 'MINUTES')
@@ -23,14 +23,14 @@ pipeline {
 
     //Build
     stages {
-        stage('Build'){
+        stage('Read package.json'){
             steps{
-                script{
-                    sh """
-                        echo 'Helo Bulid'
-                        
-                    """
+                script {
+                    def packageJson = readJSON file: 'package.json'
+                    appVersion = packageJson.version
+                    echo "Package Version = ${appVersion}"
                 }
+               
             }
         }
         stage('Test'){
