@@ -1,7 +1,8 @@
 @Library('jenkins-shared-library') _
 
 def configMap = [
-    greeting : "Hello Jenkins"
+    project : "roboshop",
+    component : "catalogue"
 ]
 
-samplePipeline(configMap)
+nodejsEKSPipeline(configMap)
