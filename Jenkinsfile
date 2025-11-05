@@ -1,4 +1,4 @@
-@Library('jenkins-shared-libbrary') _
+@Library('jenkins-shared-library') _
 
 def configMap = [
     greeting : "Hello Jenkins"
